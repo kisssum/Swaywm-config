@@ -1,0 +1,375 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                  Basic                                              #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# 主键(Mod1=<Alt>,Mod4=<Super>)
+set $mod   Mod4
+set $term  xfce4-terminal
+set $menu  rofi -show drun -theme config
+set $screenshot grim Pictures/$(date +%Y-%m-%d-%H:%M:%S).jpeg -t jpeg
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+# 窗口
+set $ws1 1:🏛 Term
+set $ws2 2:♨ Edit
+set $ws3 3:🔍 Browser
+set $ws4 4:💻 Vbox
+set $ws5 5:📺 Video
+set $ws6 6:🎶 Music
+set $ws7 7:🕸
+set $ws8 8:🎮 Game
+set $ws9 9:HDMI
+set $ws0 10:🕸 OBS
+set $wsNULL Null
+
+# 图片
+set $img_bg     ~/Pictures/bg/024.jpg
+set $img_lock   swaylock -e -F -i ~/Pictures/bg/023.jpg
+
+# 应用在特定窗口启动
+assign [class="VSCodium"] $ws2
+assign [class="firefox"] $ws3
+assign [class="Chromium"] $ws3
+assign [class="netease-cloud-music"] $ws6
+assign [class="Steam"] $ws8
+assign [class="obs"] $ws0
+
+# 浮动应用
+# for_window [class="gedit"] floating enable
+
+# 外接显示器
+workspace $ws9 output HDMI-A-1
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                  Output Display                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# man 5 sway-output
+# 获取屏幕信息:swaymsg -t get_outputs
+output * {
+	# 背景
+	background $img_bg fill
+	# 分辨率
+	resolution 1920x1080
+	# 缩放
+ 	scale      0
+	# 屏幕旋转
+	transform  0
+  	# dpms on   # 显示器电源
+  	# toggle    # 显示器切换
+}
+
+output eDP-1 {
+
+}
+
+output HDMI-A-1 {
+  #	transform 270
+  #	toggle
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                        Input                                        #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# swaymsg -t get_inputs
+# man 5 sway-input
+input "ETPS/2_Elantech_Touchpad" {
+  dwt              enabled
+  tap              enabled
+  natural_scroll   enabled
+  middle_emulation enabled
+}
+
+# man 7 xkeyboard-config
+input "Thinkpad Extra Buttons" {
+  xkb_layout   us,de
+  xkb_variant  ,nodeadkeys
+  xkb_options  grp:alt_shift_toggle
+  # 键盘重复延迟速率
+  repeat_delay 500
+  repeat_rate  5
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                        自启                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+exec fcitx
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                        Keys                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# 打开终端
+bindsym $mod+Return workspace $ws1; exec $term
+
+# 打开应用菜单
+bindsym $mod+o exec $menu
+
+# 打开文件管理器
+bindsym $mod+e exec $term -e ranger
+bindsym $mod+Shift+e exec nautilus
+
+# 关闭应用
+bindsym $mod+q kill
+
+# 截图
+bindsym Print exec $screenshot
+
+# 录屏
+bindsym $mod+g workspace $ws0; exec obs
+
+# 音量(F1:0,F2:-,F3:+)
+bindsym XF86AudioMute exec "amixer set Master toggle && amixer set Speaker on"
+bindsym XF86AudioLowerVolume exec amixer set Master playback 5-  
+bindsym XF86AudioRaiseVolume exec amixer set Master playback 5+  
+
+# 麦克风开关(F4)
+bindsym XF86AudioMicMute exec "amixer set Capture toggle"
+
+# 亮度(F5:-,F6:+)
+bindsym XF86MonBrightnessDown exec "brightnessctl set 5%-"
+bindsym XF86MonBrightnessUp exec "brightnessctl set +5%"
+
+# 面板分割方向
+bindsym $mod+v splitv
+bindsym $mod+b splith
+
+# 面板布局
+bindsym $mod+Shift+v layout stacking
+bindsym $mod+Shift+b layout tabbed
+bindsym $mod+c layout toggle split
+
+# 面板全屏
+bindsym $mod+f fullscreen
+
+# 面板悬浮|平铺
+bindsym $mod+Shift+space floating toggle
+
+# 面包悬浮时改变焦点
+bindsym $mod+space focus mode_toggle
+
+# 父焦点
+bindsym $mod+a focus parent
+
+# 隐藏面板
+bindsym $mod+Shift+minus move scratchpad
+
+# 显示面板
+bindsym $mod+minus scratchpad show
+
+# 移动面板焦距
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# 移动面板至其它窗口
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+# 切换窗口
+bindsym $mod+d workspace $wsNULL
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# 移动面版至指定窗口,并切换至此窗口
+bindsym $mod+Shift+1 move container to workspace $ws1;workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2;workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3;workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4;workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5;workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6;workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7;workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8;workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9;workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0;workspace $ws0
+
+# 返回上一次进入的窗口
+workspace_auto_back_and_forth no
+bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_and_forth
+
+# 进入下一个|上一个窗口
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                        Mode                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# 调整面板样式
+bindsym $mod+m mode "$border_style"
+set $border_style (1)none ,(2)normal 0 ,(3)normal 1
+mode "$border_style" {
+	bindsym 1 border none ,mode "default"
+	bindsym 2 border normal 0 ,mode "default"
+	bindsym 3 border normal 1 ,mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+
+# sway
+bindsym $mod+s mode "$sway"
+set $sway (r)eload ,(l)ock ,(b)ar ,(e)xit_wayland
+mode "$sway" {
+    bindsym r reload            ,mode "default"
+  	bindsym l exec $img_lock    ,mode "default"
+  	bindsym b bar  mode toggle   ,mode "default"
+  	bindsym e exec swaymsg exit ,mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+s mode "default"
+}
+
+# 系统
+bindsym $mod+Shift+s mode "$system"
+set $system (r)eboot ,(p)oweroff ,(s)uspend(men) ,(h)ibernate(swap) ,(R)escue ,(e)mergency
+mode "$system" {
+    bindsym r       exec systemctl reboot                 ,mode "default"
+    bindsym p       exec systemctl poweroff               ,mode "default"
+    bindsym s       exec systemctl suspend && $img_lock   ,mode "default"
+    bindsym h       exec systemctl hibernate && $img_lock ,mode "default"
+    bindsym Shift+r exec systemctl rescue                 ,mode "default"
+    bindsym e       exec systemctl emergency              ,mode "default"
+
+    bindsym Return 		 mode "default"
+    bindsym Escape 		 mode "default"
+    bindsym $mod+Shift+s mode "default"
+}
+
+# 调整面板大小
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym $left  resize shrink width  10px
+    bindsym $down  resize grow   height 10px
+    bindsym $up    resize shrink height 10px
+    bindsym $right resize grow   width  10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# 应用菜单树
+bindsym $mod+grave mode "$app"
+set $app (b)rowser ,(w)ps
+mode "$app" {
+	bindsym b mode "$browser"
+	bindsym w mode "$wps"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+grave mode "default"
+}
+
+set $browser (b)ack ,(f)irefox ,(c)hromium
+mode "$browser" {
+    bindsym b mode "$app"
+  	bindsym f workspace $ws3 ;exec firefox ,mode "default"
+  	bindsym c workspace $ws3 ;exec chromium ,mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $wps (b)ack ,(w)ork ,(e)xcel ,(p)pt ,(P)df
+mode "$wps" {
+    bindsym b mode "$app"
+  	bindsym w exec wps          ,mode "default"
+  	bindsym e exec et     		,mode "default"
+  	bindsym p exec wpp    		,mode "default"
+  	bindsym Shift+p exec wpspdf ,mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                        Theme                                         #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    status_command          i3status -c ~/.config/sway/i3status.conf
+    # status_command          i3status -c /etc/i3status.conf
+    # 去除窗口编号
+    strip_workspace_numbers yes
+    # 状态栏分隔符 
+    separator_symbol        " "
+    position                top
+    font pango:             Source Code Pro Medium 12
+  	height                  30
+  	pango_markup            enabled
+
+    colors {
+	    # 字体颜色
+      statusline  #292929
+	    # 背景颜色
+       background #F2EEEDD0
+		  # 分隔符颜色
+      separator   #87CEFA
+      #                  边框      背景      字体
+	  	# 选中编号窗口
+      focused_workspace  #87CEFA   #87CEFA   #FFFFFF
+	  	# 未选中编号窗口
+      inactive_workspace #F2EEEDD0 #F2EEEDD0 #292929
+	  	# 活动编号窗口
+      active_workspace   #00FF00   #F2EEEDD0 #FF0000
+
+      urgent_workspace   #FF0000   #FFFFFF77 #FF0000
+	  	# 模块
+      binding_mode       #87CEFA   #87CEFA   #FFFFFF
+    }
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                Windows Theme                                          #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# 窗口间距和边距
+gaps inner 20
+gaps outer 0
+
+# 隐藏边框
+#hide_edge_borders both
+
+# 窗口边框大小(会去除标题栏)
+#default_border pixel 2
+
+# 可用鼠标拖拽悬浮窗口
+floating_modifier $mod normal
+
+# 标题栏字体字号
+font pango: Source Code Pro Medium 12
+
+# 面板标题栏文字对齐方式(left|center|right)
+title_align center
+
+#						            标题栏边框 标题栏背景 标题栏字体 分裂线    边框线
+# 选中面板
+client.focused          #FFFFFF      #FFFFFF    #292929    #00FFFF    #00000000
+# 选中过但焦距不在此的面板
+client.focused_inactive #E1E1E1      #F2EEED    #666666    #008888    #00000000
+# 未选中的面板
+client.unfocused        #E1E1E1      #F2EEED    #666666    #00000000  #00000000
+
+client.urgent           #FF0000      #FF0000    #FFFFFF    #F0000000  #00000000
+# 占位符
+client.placeholder      #000000      #848484    #FFFFFF    #00000000  #00000000
+
+client.background       #FFFFFF
