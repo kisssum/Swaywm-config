@@ -16,7 +16,7 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>e</kbd>|打开终端文件管理器|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>e</kbd>|打开GUI文件管理器|
 |<kbd>Super</kbd>+<kbd>q</kbd>|关闭面板|
-|<kbd>Super</kbd>+<kbd>Print</kbd>|全屏截图|
+|<kbd>Super</kbd>+<kbd>Print</kbd>|截图|
 |<kbd>Super</kbd>+<kbd>g</kbd>|录屏|
 
 ## 面板
@@ -26,14 +26,25 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>j</kbd>|下移焦距|
 |<kbd>Super</kbd>+<kbd>k</kbd>|上移焦距|
 |<kbd>Super</kbd>+<kbd>l</kbd>|右移焦距|
+|<kbd>Super</kbd>+<kbd>a</kbd>|父焦距|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>h</kbd>|左移面板|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>j</kbd>|下移面板|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>k</kbd>|上移面板|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>l</kbd>|右移面板|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>1</kbd>|移动面板至1号窗口，并切换至该窗口|
 |...|...|
-|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>10</kbd>|移动面板至10号窗口，并切换至该窗口|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>0</kbd>|移动面板至10号窗口，并切换至该窗口|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>z</kbd>|移动面板至上一次活动的窗口|
+|<kbd>Super</kbd>+<kbd>v</kbd>|面板水平分割方向|
+|<kbd>Super</kbd>+<kbd>b</kbd>|面板垂直分割方向|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd>|水平堆叠面板|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>b</kbd>|垂直堆叠面板|
+|<kbd>Super</kbd>+<kbd>c</kbd>|切换面板布局|
+|<kbd>Super</kbd>+<kbd>f</kbd>|面板全屏|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>|悬浮/平铺面板|
+|<kbd>Super</kbd>+<kbd>Space</kbd>|面板悬浮时改变焦距|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>-</kbd>|隐藏面板|
+|<kbd>Super</kbd>+<kbd>-</kbd>|显示面板|
 
 ## 窗口
 |快捷键|作用|
@@ -46,6 +57,14 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>.</kbd>|切换到下一个窗口|
 |<kbd>Super</kbd>+<kbd>z</kbd>|返回上一次活动的窗口|
 
+## 音量
+|快捷键|作用|
+|:-|:-|
+|<kbd>Fn</kbd>+<kbd>F1</kbd>|静音|
+|<kbd>Fn</kbd>+<kbd>F2</kbd>|减小音量|
+|<kbd>Fn</kbd>+<kbd>F3</kbd>|加大静音|
+|<kbd>Fn</kbd>+<kbd>F4</kbd>|麦克风开关|
+
 ## 模块
 
 ### 面板样式菜单：<kbd>Super</kbd>+<kbd>m</kbd>
@@ -53,11 +72,11 @@ git clone https://github.com/kisssum/swaywm-config.git
 |:-|:-|
 |<kbd>1</kbd>|无标题，无边框|
 |<kbd>2</kbd>|有标题，无边框|
-|<kbd>2</kbd>|有标题，有边框|
+|<kbd>3</kbd>|有标题，有边框|
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>m</kbd>|关闭菜单|
 
-### `Sway`窗口管理菜单：<kbd>Super</kbd>+<kbd>s</kbd>
+### Sway窗口管理菜单：<kbd>Super</kbd>+<kbd>s</kbd>
 |快捷键|作用|
 |:-|:-|
 |<kbd>r</kbd>|重载配置|
