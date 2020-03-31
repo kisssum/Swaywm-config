@@ -122,13 +122,3 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>l</kbd>|调整宽度|
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
-
-## 效果
-![](./img/00.jpg "浮动")
-![](./img/01.jpg "应用菜单")
-![](./img/02.jpg "平铺")
-![](./img/03.jpg "平铺2")
-![](./img/06.jpg "平铺3")
-![](./img/04.jpg "堆叠")
-![](./img/05.jpg "堆叠2")
-![]("https://note.youdao.com/yws/api/personal/file/WEB39d5cf4c3fadc51062dd8898e42fa4c1?method=download&shareKey=38a5f1dc373e1f499457cd2da6aa24ac")
