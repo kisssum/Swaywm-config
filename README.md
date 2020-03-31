@@ -131,3 +131,4 @@ git clone https://github.com/kisssum/swaywm-config.git
 ![](./img/06.jpg "平铺3")
 ![](./img/04.jpg "堆叠")
 ![](./img/05.jpg "堆叠2")
+![]("https://note.youdao.com/yws/api/personal/file/WEB39d5cf4c3fadc51062dd8898e42fa4c1?method=download&shareKey=38a5f1dc373e1f499457cd2da6aa24ac")
