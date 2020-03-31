@@ -257,43 +257,35 @@ bindsym $mod+comma workspace prev
 bindsym $mod+m mode "$border_style"
 set $border_style (1)none ,(2)normal 0 ,(3)normal 1
 mode "$border_style" {
-	bindsym 1 border none ,mode "default"
-	bindsym 2 border normal 0 ,mode "default"
-	bindsym 3 border normal 1 ,mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+m mode "default"
+	bindsym 1 border none    , mode "default"
+	bindsym 2 border normal 0, mode "default"
+	bindsym 3 border normal 1, mode "default"
+  bindsym Escape 		         mode "default"
+  bindsym $mod+m             mode "default"
 }
 
 # sway
 bindsym $mod+s mode "$sway"
-set $sway (r)eload ,(l)ock ,(b)ar ,(e)xit_wayland
+set $sway (r)eload ,(l)ock ,(b)ar ,(e)xit_Swaywm
 mode "$sway" {
-    bindsym r reload            ,mode "default"
-  	bindsym l exec $img_lock    ,mode "default"
-  	bindsym b bar  mode toggle   ,mode "default"
-  	bindsym e exec swaymsg exit ,mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+s mode "default"
+  bindsym r reload            ,mode "default"
+  bindsym l exec $img_lock    ,mode "default"
+  bindsym b bar  mode toggle   ,mode "default"
+  bindsym e exec swaymsg exit ,mode "default"
+  bindsym Escape 		 mode "default"
+  bindsym $mod+s mode "default"
 }
 
 # 系统
 bindsym $mod+Shift+s mode "$system"
-set $system (r)eboot ,(p)oweroff ,(s)uspend(men) ,(h)ibernate(swap) ,(R)escue ,(e)mergency
+set $system (r)eboot ,(p)oweroff ,(s)uspend(men) ,(h)ibernate(swap)
 mode "$system" {
-    bindsym r       exec systemctl reboot                 ,mode "default"
-    bindsym p       exec systemctl poweroff               ,mode "default"
-    bindsym s       exec systemctl suspend && $img_lock   ,mode "default"
-    bindsym h       exec systemctl hibernate && $img_lock ,mode "default"
-    bindsym Shift+r exec systemctl rescue                 ,mode "default"
-    bindsym e       exec systemctl emergency              ,mode "default"
-
-    bindsym Return 		 mode "default"
-    bindsym Escape 		 mode "default"
-    bindsym $mod+Shift+s mode "default"
+  bindsym r       exec systemctl reboot                 ,mode "default"
+  bindsym p       exec systemctl poweroff               ,mode "default"
+  bindsym s       exec systemctl suspend && $img_lock   ,mode "default"
+  bindsym h       exec systemctl hibernate && $img_lock ,mode "default"
+  bindsym Escape 		 mode "default"
+  bindsym $mod+Shift+s mode "default"
 }
 
 # 调整面板大小
@@ -303,8 +295,6 @@ mode "resize" {
     bindsym $down  resize grow   height 10px
     bindsym $up    resize shrink height 10px
     bindsym $right resize grow   width  10px
-
-    bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }

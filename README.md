@@ -45,3 +45,44 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>,</kbd>|切换到上一个窗口|
 |<kbd>Super</kbd>+<kbd>.</kbd>|切换到下一个窗口|
 |<kbd>Super</kbd>+<kbd>z</kbd>|返回上一次活动的窗口|
+
+## 模块
+
+### 面板样式菜单：<kbd>Super</kbd>+<kbd>m</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>1</kbd>|无标题，无边框|
+|<kbd>2</kbd>|有标题，无边框|
+|<kbd>2</kbd>|有标题，有边框|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>m</kbd>|关闭菜单|
+
+### `Sway`窗口管理菜单：<kbd>Super</kbd>+<kbd>s</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>r</kbd>|重载配置|
+|<kbd>l</kbd>|锁屏|
+|<kbd>b</kbd>|显示/隐藏状态栏|
+|<kbd>e</kbd>|关闭`Swaywm`|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>s</kbd>|关闭菜单|
+
+### 系统管理菜单：<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>s</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>r</kbd>|重启|
+|<kbd>p</kbd>|关机|
+|<kbd>s</kbd>|锁屏并睡眠(内存)|
+|<kbd>h</kbd>|锁屏并睡眠(硬盘)|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>s</kbd>|关闭菜单|
+
+### 调整面板大小：<kbd>Super</kbd>+<kbd>r</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>h</kbd>|调整宽度|
+|<kbd>j</kbd>|调整高度|
+|<kbd>k</kbd>|调整高度|
+|<kbd>l</kbd>|调整宽度|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
