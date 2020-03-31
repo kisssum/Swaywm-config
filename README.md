@@ -13,7 +13,7 @@
 |状态栏|i3status|
 |应用菜单|rofi|
 |录屏|obs|
-|终端|alacritty|
+|终端|xfce4-terminal|
 |主题|deepin-gtk-theme|
 |图标|deepin-icon-theme|
 |设置主题|lxappearance|
@@ -122,3 +122,12 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>l</kbd>|调整宽度|
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
+
+## 效果
+![](./img/00.jpg "浮动")
+![](./img/01.jpg "应用菜单")
+![](./img/02.jpg "平铺")
+![](./img/03.jpg "平铺2")
+![](./img/06.jpg "平铺3")
+![](./img/04.jpg "堆叠")
+![](./img/05.jpg "堆叠2")
