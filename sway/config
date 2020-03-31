@@ -4,7 +4,8 @@
 
 # 主键(Mod1=<Alt>,Mod4=<Super>)
 set $mod   Mod4
-set $term  xfce4-terminal
+#set $term  xfce4-terminal
+set $term  alacritty
 set $menu  rofi -show drun -theme config
 set $screenshot grim Pictures/$(date +%Y-%m-%d-%H:%M:%S).jpeg -t jpeg
 set $left  h
@@ -48,8 +49,8 @@ assign [class="obs"] $ws0
 # 外接显示器
 workspace $ws9 output HDMI-A-1
 
-# man 5 sway-output
 # 获取屏幕信息:swaymsg -t get_outputs
+# man 5 sway-output
 output * {
 	# 背景
 	background $img_bg fill

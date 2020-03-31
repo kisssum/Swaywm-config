@@ -1,14 +1,31 @@
 # Swaywm
-Sway是一个与i3wm兼容，并原生基于Wayland的窗口管理器。
+[Sway]是一个与[i3wm]兼容，并原生基于[Wayland]的窗口管理器。
+
+[Sway]: https://swaywm.org
+[i3wm]: https://i3wm.org
+[Wayland]: https://wayland.freedesktop.org
+
+# 需要的组件
+|功能|软件|
+|:-|:-|
+|截屏|grim|
+|锁屏|swaylock|
+|状态栏|i3status|
+|应用菜单|rofi|
+|录屏|obs|
+|终端|alacritty|
+|主题|deepin-gtk-theme|
+|图标|deepin-icon-theme|
+|设置主题|lxappearance|
 
 # 下载配置
 ``` bash
 git clone https://github.com/kisssum/swaywm-config.git
 ```
 
-# 按键绑定
+# 快捷键
 `$mod`绑定`Super`作为修饰键。
-## 基础
+## 基本
 |快捷键|作用|
 |:-|:-|
 |<kbd>Super</kbd>+<kbd>Return</kbd>|打开终端|
