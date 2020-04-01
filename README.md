@@ -124,4 +124,4 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
 
 ## 效果
-![平铺](https://github.com/kisssum/swaywm-config/blob/master/img/00.jpg)
+![平铺](http://github.com/kisssum/swaywm-config/raw/master/img/00.jpg)
