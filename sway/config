@@ -27,8 +27,8 @@ set $ws0 10:🕸 OBS
 set $wsNULL Null
 
 # 图片
-set $img_bg     ~/Pictures/bg/024.jpg
-set $img_lock   swaylock -e -F -i ~/Pictures/bg/023.jpg
+set $img_bg     ~/Pictures/bg/bp/white.jpg
+set $img_lock   swaylock -e -F -i ~/Pictures/bg/bp/white2.jpg
 
 # 应用在特定窗口启动
 assign [class="VSCodium"] $ws2
