@@ -10,13 +10,17 @@
 |:-|:-|
 |截屏|grim|
 |锁屏|swaylock|
-|状态栏|i3status|
+|状态栏|py3status|
 |应用菜单|rofi|
 |录屏|obs|
 |终端|xfce4-terminal|
-|主题|deepin-gtk-theme|
-|图标|deepin-icon-theme|
+|终端|alacritty|
+|主题|arc-gtk-theme|
+|图标|mcmojave-circle-icon-theme-git|
 |设置主题|lxappearance|
+|屏幕亮度|python-pydus|
+|屏幕亮度|brightnessctl-logind|
+|音乐|cmus|
 
 # 下载配置
 ``` bash
@@ -82,6 +86,12 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Fn</kbd>+<kbd>F3</kbd>|加大静音|
 |<kbd>Fn</kbd>+<kbd>F4</kbd>|麦克风开关|
 
+## 屏幕亮度
+|快捷键|作用|
+|:-|:-|
+|<kbd>Fn</kbd>+<kbd>F5</kbd>|减小亮度|
+|<kbd>Fn</kbd>+<kbd>F6</kbd>|加大亮度|
+
 ## 模块
 
 ### 面板样式菜单：<kbd>Super</kbd>+<kbd>m</kbd>
@@ -124,6 +134,5 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
 
 ## 效果
-![](https://note.youdao.com/yws/api/personal/file/WEB06f5a8d4e4506ecdd0ff7ccca1a2bd83?method=download&shareKey=1c4557a819c216399f108ec87a2edd56)
-![](https://note.youdao.com/yws/api/personal/file/WEBf80147a94842bed8ff513eeabbb091d2?method=download&shareKey=4fefda50b628b7be74ae27d22213ca49)
-![](https://note.youdao.com/yws/api/personal/file/WEB113f0b2ed0e2c0c3eb216b90b182429f?method=download&shareKey=7adfbb9cafa8334e5563d819f3c1a40d)
+![](https://note.youdao.com/yws/api/personal/file/WEBfa22578697e2c2893d5efd7a9c57725f?method=download&shareKey=298c2ee8e3970a0cc88c1d9c28a6e4d0)
+![](https://note.youdao.com/yws/api/personal/file/WEB6bd11e0fb3c229122d1e0fb7f642900f?method=download&shareKey=7f6feef302da35db9291a057e2283a71)

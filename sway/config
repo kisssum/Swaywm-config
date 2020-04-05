@@ -5,7 +5,7 @@
 # 主键(Mod1=<Alt>,Mod4=<Super>)
 set $mod   Mod4
 set $term  xfce4-terminal
-#set $term  alacritty
+set $term2 alacritty
 set $menu  rofi -show drun -theme config
 set $screenshot grim Pictures/$(date +%Y-%m-%d-%H:%M:%S).jpeg -t jpeg
 set $left  h
@@ -37,9 +37,7 @@ assign [class="Chromium"] $ws3
 assign [class="netease-cloud-music"] $ws6
 assign [class="Steam"] $ws8
 assign [class="obs"] $ws0
-
-# 浮动应用
-# for_window [class="gedit"] floating enable
+assign [class=".*[eE]dit.*" title="gedit"] $ws2
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -52,22 +50,36 @@ workspace $ws9 output HDMI-A-1
 # 获取屏幕信息:swaymsg -t get_outputs
 # man 5 sway-output
 output * {
-	# 背景
+	# 背景:fill|fit|center|tile
+  #      拉伸|填充|合适|居中|瓷砖 
 	background $img_bg fill
+  # 填充可提供回退颜色以覆盖输出的剩余部分
+  # background $img_bg fit #FF0000
+  # 单色填充
+  # background #FF0000 solid_color
+ 
 	# 分辨率
-	resolution 1920x1080
-	# 缩放
+	resolution 1920x1080@60Hz
+	# 缩放,HiDPI不支持Xwayland客户端(窗口将变得模糊)。
  	scale      0
+  # 缩放输出:linear|nearest|smart
+  #           模糊|线性|智能
+  scale_filter linear
+  # 色彩模式:rgb|bgr|vrgb|vbgr|none
+  subpixel rgb
 	# 屏幕旋转
 	transform  0
-  # 显示器电源开关
+  # 延迟渲染
+  max_render_time 1
+  # 通过DPMS启用或禁用指定的输出
  	# dpms on   
-  # 显示器切换
+  # 切换输出
  	# toggle    
+  # 禁用|启用输出
+  # disable|enable
 }
 
 output eDP-1 {
-
 }
 
 output HDMI-A-1 {
@@ -89,7 +101,7 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
   natural_scroll   disenabled
   middle_emulation enabled
   # 灵敏度
-  pointer_accel    1
+  pointer_accel    0.7
   # 翻页速度
   scroll_factor 5
   # 手指映射
@@ -104,7 +116,7 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
   # 自然滚动方式
   natural_scroll   disenabled
   # 灵敏度
-  pointer_accel    1
+  pointer_accel    0.7
   # 翻页速度
   scroll_factor 5
 }
@@ -132,7 +144,7 @@ input "6058:20564:Thinkpad_Extra_Buttons" {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        自启                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
+exec cmus &
 exec fcitx
 exec swayidle -w \
          timeout 10 $img_lock \
@@ -144,15 +156,27 @@ exec swayidle -w \
 #                                        Keys                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+# 执行< shell命令>
+# exec <shell command>
+
+# 与exec类似，但是shell命令将在重新加载后再次执行。
+# exec_always < shell命令>
+
 # 打开终端
 bindsym $mod+Return workspace $ws1; exec $term
+bindsym $mod+Shift+Return workspace $ws1; exec $term2
 
 # 打开应用菜单
 bindsym $mod+o exec $menu
 
+#bindsym $mod+x {
+#  exec firefox && chromium
+#}
+
 # 打开文件管理器
 bindsym $mod+e exec $term -e ranger
-bindsym $mod+Shift+e exec nautilus
+bindsym $mod+Shift+e exec pcmanfm
+#bindsym $mod+Shift+e exec nautilus
 
 # 关闭面板
 bindsym $mod+q kill
@@ -161,6 +185,7 @@ bindsym $mod+q kill
 bindsym Print exec $screenshot
 
 # 录屏
+#bindsym $mod+g exec deepin-screen-recorder
 bindsym $mod+g workspace $ws0; exec obs
 
 # 音量(F1:0,F2:-,F3:+)
@@ -172,8 +197,8 @@ bindsym XF86AudioRaiseVolume exec amixer set Master playback 5+
 bindsym XF86AudioMicMute exec "amixer set Capture toggle"
 
 # 亮度(F5:-,F6:+)
-#bindsym XF86MonBrightnessDown exec "brightnessctl set 5%-"
-#bindsym XF86MonBrightnessUp exec "brightnessctl set +5%"
+bindsym XF86MonBrightnessDown exec "brightnessctl specific 10%-"
+bindsym XF86MonBrightnessUp exec "brightnessctl specific 10%+"
 
 # 面板分割方向
 bindsym $mod+v splitv
@@ -256,7 +281,7 @@ bindsym $mod+comma workspace prev
 
 # 调整面板样式
 bindsym $mod+m mode "$border_style"
-set $border_style (1)none ,(2)normal 0 ,(3)normal 1
+set $border_style (1)无标题无边框 ,(2)有标题无边框 ,(3)有标题有边框
 mode "$border_style" {
 	bindsym 1 border none    , mode "default"
 	bindsym 2 border normal 0, mode "default"
@@ -271,10 +296,10 @@ set $sway (r)eload ,(l)ock ,(b)ar ,(e)xit_Swaywm
 mode "$sway" {
   bindsym r reload            ,mode "default"
   bindsym l exec $img_lock    ,mode "default"
-  bindsym b bar  mode toggle   ,mode "default"
+  bindsym b bar  mode toggle  ,mode "default"
   bindsym e exec swaymsg exit ,mode "default"
-  bindsym Escape 		 mode "default"
-  bindsym $mod+s mode "default"
+  bindsym Escape 		           mode "default"
+  bindsym $mod+s               mode "default"
 }
 
 # 系统
@@ -339,22 +364,25 @@ mode "$wps" {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    status_command          i3status -c ~/.config/sway/i3status.conf
-    # status_command          i3status -c /etc/i3status.conf
+    id 1
+    status_command          py3status -c ~/.config/sway/status.conf
     # 去除窗口编号
     strip_workspace_numbers yes
     # 状态栏分隔符 
     separator_symbol        " "
+    # 顶部 右侧 底部 左侧
+    gaps 10 10 10 10
     position                top
     font pango:             Source Code Pro Medium 12
+    # 高度
   	height                  30
   	pango_markup            enabled
 
-    colors {
+ colors {
 	    # 字体颜色
       statusline  #292929
 	    # 背景颜色
-       background #F2EEEDD0
+      background #F2EEEDD0
 		  # 分隔符颜色
       separator   #87CEFA
       #                  边框      背景      字体
@@ -364,26 +392,36 @@ bar {
       inactive_workspace #F2EEEDD0 #F2EEEDD0 #292929
 	  	# 活动编号窗口
       active_workspace   #00FF00   #F2EEEDD0 #FF0000
-
-      urgent_workspace   #FF0000   #FFFFFF77 #FF0000
-	  	# 模块
+      # 紧急活动的窗口
+      urgent_workspace   #F2EEEDD0 #F2EEEDD0 #FF0000
+  	  # 模块
       binding_mode       #87CEFA   #87CEFA   #FFFFFF
     }
 }
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                Windows Theme                                          #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# 窗口间距和边距
+# 面板分割默认方向:horizontal|vertical|auto
+#                   垂直|水平|自动
+default_orientation  horizontal
+
+# 设置新平铺窗口的默认边框样式
+# normal|none|pixel [<n>]
+default_border normal 2
+
+# 新窗口初始布局:default|stacking|tabbed
+#                默认|水平堆叠|垂直堆叠
+workspace_layout default
+
+# 是否启用xwayland:enable|disable|force
+xwayland enable
+
+# 窗口间隙
 gaps inner 20
 gaps outer 0
-
-# 隐藏边框
-#hide_edge_borders both
-
-# 窗口边框大小(会去除标题栏)
-#default_border pixel 2
 
 # 可用鼠标拖拽悬浮窗口
 floating_modifier $mod normal
@@ -391,8 +429,11 @@ floating_modifier $mod normal
 # 标题栏字体字号
 font pango: Source Code Pro Medium 12
 
-# 面板标题栏文字对齐方式(left|center|right)
+# 标题栏文字对齐方式(left|center|right)
 title_align center
+
+# 标题栏高度
+titlebar_padding 8
 
 #						            标题栏边框 标题栏背景 标题栏字体 分裂线    边框线
 # 选中面板
@@ -401,9 +442,5 @@ client.focused          #FFFFFF      #FFFFFF    #292929    #00FFFF    #00000000
 client.focused_inactive #E1E1E1      #F2EEED    #666666    #008888    #00000000
 # 未选中的面板
 client.unfocused        #E1E1E1      #F2EEED    #666666    #00000000  #00000000
-
-client.urgent           #FF0000      #FF0000    #FFFFFF    #F0000000  #00000000
-# 占位符
-client.placeholder      #000000      #848484    #FFFFFF    #00000000  #00000000
-
-client.background       #FFFFFF
+# 紧急提示的面板
+client.urgent           #FFFFFF      #FFFFFF    #FF0000    #F0000000  #00000000
