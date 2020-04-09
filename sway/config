@@ -27,8 +27,8 @@ set $ws0 10:🕸 OBS
 set $wsNULL Null
 
 # 图片
-set $img_bg     ~/Pictures/bg/bp/white.jpg
-set $img_lock   swaylock -e -F -i ~/Pictures/bg/bp/white2.jpg
+set $img_bg     ~/Pictures/bg/flowers/02.jpg
+set $img_lock   swaylock -e -F -i ~/Pictures/bg/flowers/01.jpg
 
 # 应用在特定窗口启动
 assign [class="VSCodium"] $ws2
@@ -185,8 +185,9 @@ bindsym $mod+q kill
 bindsym Print exec $screenshot
 
 # 录屏
+bindsym $mod+g exec deepin-voice-recorder
 #bindsym $mod+g exec deepin-screen-recorder
-bindsym $mod+g workspace $ws0; exec obs
+bindsym $mod+Shift+g workspace $ws0; exec obs
 
 # 音量(F1:0,F2:-,F3:+)
 bindsym XF86AudioMute exec "amixer set Master toggle && amixer set Speaker on"
@@ -197,8 +198,8 @@ bindsym XF86AudioRaiseVolume exec amixer set Master playback 5+
 bindsym XF86AudioMicMute exec "amixer set Capture toggle"
 
 # 亮度(F5:-,F6:+)
-bindsym XF86MonBrightnessDown exec "brightnessctl specific 10%-"
-bindsym XF86MonBrightnessUp exec "brightnessctl specific 10%+"
+bindsym XF86MonBrightnessDown exec "brightnessctl specific 5%-"
+bindsym XF86MonBrightnessUp exec "brightnessctl specific 5%+"
 
 # 面板分割方向
 bindsym $mod+v splitv
@@ -285,7 +286,7 @@ set $border_style (1)无标题无边框 ,(2)有标题无边框 ,(3)有标题有�
 mode "$border_style" {
 	bindsym 1 border none    , mode "default"
 	bindsym 2 border normal 0, mode "default"
-	bindsym 3 border normal 1, mode "default"
+	bindsym 3 border normal 3, mode "default"
   bindsym Escape 		         mode "default"
   bindsym $mod+m             mode "default"
 }
@@ -362,47 +363,14 @@ mode "$wps" {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        Theme                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    id 1
-    status_command          py3status -c ~/.config/sway/status.conf
-    # 去除窗口编号
-    strip_workspace_numbers yes
-    # 状态栏分隔符 
-    separator_symbol        " "
-    # 顶部 右侧 底部 左侧
-    gaps 10 10 10 10
-    position                top
-    font pango:             Source Code Pro Medium 12
-    # 高度
-  	height                  30
-  	pango_markup            enabled
-
- colors {
-	    # 字体颜色
-      statusline  #292929
-	    # 背景颜色
-      background #F2EEEDD0
-		  # 分隔符颜色
-      separator   #87CEFA
-      #                  边框      背景      字体
-	  	# 选中编号窗口
-      focused_workspace  #87CEFA   #87CEFA   #FFFFFF
-	  	# 未选中编号窗口
-      inactive_workspace #F2EEEDD0 #F2EEEDD0 #292929
-	  	# 活动编号窗口
-      active_workspace   #00FF00   #F2EEEDD0 #FF0000
-      # 紧急活动的窗口
-      urgent_workspace   #F2EEEDD0 #F2EEEDD0 #FF0000
-  	  # 模块
-      binding_mode       #87CEFA   #87CEFA   #FFFFFF
-    }
-}
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#                                Windows Theme                                          #
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+ 
+set $white  #FFFFFF
+set $white1 #F2EEEDA0
+set $white2 #F2EEEDD0
+set $black1 #666666
+set $blue1  #87CEFA
+set $pink1  #FF69B4
+set $rgba   #00000000
 
 # 面板分割默认方向:horizontal|vertical|auto
 #                   垂直|水平|自动
@@ -410,7 +378,7 @@ default_orientation  horizontal
 
 # 设置新平铺窗口的默认边框样式
 # normal|none|pixel [<n>]
-default_border normal 2
+default_border normal 3
 
 # 新窗口初始布局:default|stacking|tabbed
 #                默认|水平堆叠|垂直堆叠
@@ -427,20 +395,57 @@ gaps outer 0
 floating_modifier $mod normal
 
 # 标题栏字体字号
-font pango: Source Code Pro Medium 12
+font pango: Source Code Pro Medium 13
 
 # 标题栏文字对齐方式(left|center|right)
 title_align center
 
 # 标题栏高度
-titlebar_padding 8
+titlebar_padding 5
 
 #						            标题栏边框 标题栏背景 标题栏字体 分裂线    边框线
 # 选中面板
-client.focused          #FFFFFF      #FFFFFF    #292929    #00FFFF    #00000000
+client.focused          $white1    $white1    $black1    $pink1     $white1
 # 选中过但焦距不在此的面板
-client.focused_inactive #E1E1E1      #F2EEED    #666666    #008888    #00000000
+client.focused_inactive $white1    $white1    $black1    $white1    $white1
 # 未选中的面板
-client.unfocused        #E1E1E1      #F2EEED    #666666    #00000000  #00000000
+client.unfocused        $white1    $white1    $black1    $white1    $white1
 # 紧急提示的面板
-client.urgent           #FFFFFF      #FFFFFF    #FF0000    #F0000000  #00000000
+client.urgent           $white1    $white1    $pink1     $white1    $white1
+
+bar {
+    id 1
+    status_command          py3status -c ~/.config/sway/status.conf
+    # 去除窗口编号
+    strip_workspace_numbers yes
+    # 状态栏分隔符 
+    separator_symbol        " "
+    # 顶部 右侧 底部 左侧
+    gaps 10 10 10 10
+    position                top
+    font pango:             Source Code Pro Medium 13
+    # 高度
+  	height                  30
+  	pango_markup            enabled
+
+ colors {
+ 
+	    # 字体颜色
+      statusline  $black1
+	    # 背景颜色
+      background  $white1
+		  # 分隔符颜色
+      separator   $blue1
+      #                  边框      背景      字体
+	  	# 选中编号窗口
+      focused_workspace  $white1   $white1   $pink1
+	  	# 未选中编号窗口
+      inactive_workspace $white1   $white1   $black1
+	  	# 活动编号窗口
+      active_workspace   $blue1    $blue1    $white
+      # 紧急活动的窗口
+      urgent_workspace   $blue1    $blue1    $white
+  	  # 模块
+      binding_mode       $blue1    $blue1    $white
+    }
+}

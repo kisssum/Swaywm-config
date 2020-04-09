@@ -20,7 +20,8 @@
 |设置主题|lxappearance|
 |屏幕亮度|python-pydus|
 |屏幕亮度|brightnessctl-logind|
-|音乐|cmus|
+|音乐|moc|
+|包管理检查更新|pacman-contrib|
 
 # 下载配置
 ``` bash
