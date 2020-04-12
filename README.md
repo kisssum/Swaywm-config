@@ -135,5 +135,4 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
 
 ## 效果
-![](https://note.youdao.com/yws/api/personal/file/WEBfa22578697e2c2893d5efd7a9c57725f?method=download&shareKey=298c2ee8e3970a0cc88c1d9c28a6e4d0)
-![](https://note.youdao.com/yws/api/personal/file/WEB6bd11e0fb3c229122d1e0fb7f642900f?method=download&shareKey=7f6feef302da35db9291a057e2283a71)
+![](https://note.youdao.com/yws/api/personal/file/WEB96816a2725cefbaf6a86494c253516a7?method=download&shareKey=792d0692ed6ff6dc78ddcfd527a5305f)

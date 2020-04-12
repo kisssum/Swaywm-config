@@ -7,7 +7,7 @@ set $mod   Mod4
 set $term  xfce4-terminal
 set $term2 alacritty
 set $menu  rofi -show drun -theme config
-set $screenshot grim Pictures/$(date +%Y-%m-%d-%H:%M:%S).jpeg -t jpeg
+set $screenshot grim Pictures/$(date +%Y-%m-%d-%H-%M-%S).jpg -t jpeg
 set $left  h
 set $down  j
 set $up    k
@@ -28,7 +28,7 @@ set $wsNULL Null
 
 # 图片
 set $img_bg     ~/Pictures/bg/flowers/02.jpg
-set $img_lock   swaylock -e -F -i ~/Pictures/bg/flowers/01.jpg
+set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/flowers/01.jpg
 
 # 应用在特定窗口启动
 assign [class="VSCodium"] $ws2
@@ -144,13 +144,15 @@ input "6058:20564:Thinkpad_Extra_Buttons" {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        自启                                         #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-exec cmus &
+ 
+exec mocp &
 exec fcitx
-exec swayidle -w \
-         timeout 10 $img_lock \
-         timeout 20 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000' &
+
+exec_always swayidle -w \
+                timeout 300 $img_lock \
+                timeout 600 'swaymsg "output * dpms off"' \
+                resume 'swaymsg "output * dpms on"' \
+                before-sleep $img_lock &
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        Keys                                         #
@@ -168,10 +170,6 @@ bindsym $mod+Shift+Return workspace $ws1; exec $term2
 
 # 打开应用菜单
 bindsym $mod+o exec $menu
-
-#bindsym $mod+x {
-#  exec firefox && chromium
-#}
 
 # 打开文件管理器
 bindsym $mod+e exec $term -e ranger
@@ -365,8 +363,7 @@ mode "$wps" {
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
  
 set $white  #FFFFFF
-set $white1 #F2EEEDA0
-set $white2 #F2EEEDD0
+set $white1 #F2EEEDD0
 set $black1 #666666
 set $blue1  #87CEFA
 set $pink1  #FF69B4
