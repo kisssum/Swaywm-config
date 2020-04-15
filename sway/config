@@ -20,7 +20,7 @@ set $ws3 3:🔍 Browser
 set $ws4 4:💻 Vbox
 set $ws5 5:📺 Video
 set $ws6 6:🎶 Music
-set $ws7 7:🕸 Other
+set $ws7 7:🕸
 set $ws8 8:🎮 Game
 set $ws9 9:HDMI
 set $ws0 10:🕸 OBS
@@ -32,8 +32,8 @@ set $wsNULL Null
 set $img_bg     ~/Pictures/bg/people/44.jpg
 
 #set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/flowers/01.jpg
-set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/people/04.jpg
-#set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/win/027.jpg
+#set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/people/04.jpg
+set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/win/027.jpg
 
 # 截屏
 set $screenshot_full grim ~/Pictures/$(date +%Y-%m-%d-%H-%M-%S).jpg -t jpeg
@@ -159,11 +159,11 @@ input "6058:20564:Thinkpad_Extra_Buttons" {
 exec mocp &
 exec fcitx
 
-exec swayidle -w \
+exec_always swayidle -w \
                 timeout 300 $img_lock \
                 timeout 600 'swaymsg "output * dpms off"' \
                 resume 'swaymsg "output * dpms on"' \
-                before-sleep $img_lock 
+                before-sleep $img_lock &
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        Keys                                         #
