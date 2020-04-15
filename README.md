@@ -8,10 +8,12 @@
 # 需要的组件
 |功能|软件|
 |:-|:-|
-|截屏|grim|
 |锁屏|swaylock|
+|状态栏|i3status|
 |状态栏|py3status|
 |应用菜单|rofi|
+|截屏|grim|
+|截屏选取|slurp|
 |录屏|obs|
 |终端|xfce4-terminal|
 |终端|alacritty|
@@ -38,7 +40,6 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>e</kbd>|打开终端文件管理器|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>e</kbd>|打开GUI文件管理器|
 |<kbd>Super</kbd>+<kbd>q</kbd>|关闭面板|
-|<kbd>Super</kbd>+<kbd>Print</kbd>|截图|
 |<kbd>Super</kbd>+<kbd>g</kbd>|录屏|
 
 ## 面板
@@ -94,6 +95,16 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Fn</kbd>+<kbd>F6</kbd>|加大亮度|
 
 ## 模块
+
+|<kbd>Super</kbd>+<kbd>Print</kbd>|截图|
+### 截屏菜单：<kbd>Print</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>1</kbd>|截取全部|
+|<kbd>2</kbd>|截取部分|
+|<kbd>3</kbd>|截取焦距面板|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Print</kbd>|关闭菜单|
 
 ### 面板样式菜单：<kbd>Super</kbd>+<kbd>m</kbd>
 |快捷键|作用|
