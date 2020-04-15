@@ -10,3 +10,7 @@ then
   cp ./ ~/.config/
 fi
 
+if [ ! -d ~/.config/xfce4 ]
+then
+  mkdir -p ~/.config/xfce4/terminal
+fi
