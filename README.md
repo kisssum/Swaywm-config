@@ -9,7 +9,6 @@
 |功能|软件|
 |:-|:-|
 |锁屏|swaylock|
-|状态栏|i3status|
 |状态栏|py3status|
 |应用菜单|rofi|
 |截屏|grim|
@@ -25,11 +24,6 @@
 |音乐|moc|
 |包管理检查更新|pacman-contrib|
 
-# 下载配置
-``` bash
-git clone https://github.com/kisssum/swaywm-config.git
-```
-
 # 快捷键
 `$mod`绑定`Super`作为修饰键。
 ## 基本
@@ -40,7 +34,6 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>Super</kbd>+<kbd>e</kbd>|打开终端文件管理器|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>e</kbd>|打开GUI文件管理器|
 |<kbd>Super</kbd>+<kbd>q</kbd>|关闭面板|
-|<kbd>Super</kbd>+<kbd>g</kbd>|录屏|
 
 ## 面板
 |快捷键|作用|
@@ -103,6 +96,16 @@ git clone https://github.com/kisssum/swaywm-config.git
 |<kbd>1</kbd>|截取全部|
 |<kbd>2</kbd>|截取部分|
 |<kbd>3</kbd>|截取焦距面板|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Print</kbd>|关闭菜单|
+
+|<kbd>Super</kbd>+<kbd>g</kbd>|录制|
+### 截屏菜单：<kbd>Print</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>1</kbd>|录音|
+|<kbd>2</kbd>|录屏|
+|<kbd>3</kbd>|obs|
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Print</kbd>|关闭菜单|
 

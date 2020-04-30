@@ -1,0 +1,120 @@
+
+general {
+        colors = true
+        interval = 1
+        # up
+        color_good = "#87CEFA"
+		    # down
+        color_bad = "#FF0000"
+        color_degraded = "#00FF00"
+}
+
+# 定制温度控制器
+order += "moc"
+order += "memory"
+# 下载与上传速率
+order += "netdata"
+# 网络连接
+order += "networkmanager"
+order += "volume_status"
+order += "backlight"
+order += "battery all"
+order += "tztime local"
+order += "arch_updates"
+
+moc {
+  # 下一首鼠标左键
+  button_next = 3
+  # 上一首鼠标右键
+  button_previous = 1
+  # 暂停/开始鼠标中间
+  button_pause = 2
+  # 停止无 
+  button_stop = 0
+  cache_timeout = 0.1
+  sleep_timeout = 1
+  # 播放颜色
+  color_playing = "#FF69B4"
+  # 暂停颜色
+  color_paused = "#32CD32"
+  # 停止颜色
+  color_stopped = "#FF69B4"
+  format = "[\?if=is_started [\?if=is_playing >] [\?if=is_paused \|\|] [\?if=is_stopped ..][[{artist}] [\?soft - ][{title}] | [{file}]]]"
+}
+
+memory {
+        color = "#F4A460"
+        format = "M %used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY < %total"
+}
+
+netdata {
+  cache_timeout = 2
+  format = "[\?color=down {down}Kb↓ {up}Kb↑]"
+}
+
+networkmanager {
+  cache_timeout = 1
+  format_device_separator = ' '
+  devices = ['w*']    # wireless only
+  format_device = "[\?if=general_connection [\?color=#FF69B4 {general_connection}] [\?color=#FF69B4 {ap1_bars}] [\?color=#FF69B4 {ap1_rate}]] "
+}
+
+volume_status {
+  # 需要amixer 
+  # 鼠标左键加大音量
+  button_up = 1
+  # 鼠标右键降低声音
+  button_down = 3
+  # 鼠标中间切换静音
+  button_mute = 2
+  cache_timeout = 0.1
+  blocks = "_▁▂▃▄▅▆▇█"
+  format = "[\?color=#FF69B4 [\?if=is_input 😮|♪] {percentage}%]"
+  format_muted = "[\?color=#FF69B4 [\?if=is_input 😶|♪] muted]"
+}
+
+backlight {
+  # 需安装python-pydbus、brightnessctl-logind
+  cache_timeout = 0.1
+  # 亮度改变值
+  brightness_delta = 10
+  # 左键加亮度
+  button_up = 1
+  # 右键减亮度
+  button_down = 3
+  # 启动时亮度
+  #brightness_initial = 40
+  format = "[\?color=#00CED1 ☼ {level}%]"
+}
+
+battery all {
+        color = "#32CD32"
+        format = "%status%percentage"
+        format_down = ""
+        last_full_capacity = true
+    		# 取整
+        integer_battery_capacity = false
+        status_chr = "⚡ "
+        status_bat = "☉ "
+        status_unk = "? "
+        status_full = "☻ "
+        low_threshold = 15
+        threshold_type = time
+}
+
+tztime local {
+      color = "#F4A460"
+      format = "%Y-%m-%d*%u %H:%M:%S %p"
+}
+
+arch_updates {
+  # 刷新间隔
+  cache_timeout = 600
+  # 显示模块(pacman,aur,total))
+  # 需装pacman-contrib
+  format = '[\?color=#F4A460 Up {pacman}]'
+  # 如果更新为0则不显示
+  hide_if_zero = true
+}

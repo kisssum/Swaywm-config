@@ -6,7 +6,7 @@
 set $mod   Mod4
 set $term  xfce4-terminal
 set $term2 alacritty
-set $menu  rofi -show drun -theme config
+set $menu_drun   rofi -show drun -theme config
 
 set $left  h
 set $down  j
@@ -20,7 +20,7 @@ set $ws3 3:🔍 Browser
 set $ws4 4:💻 Vbox
 set $ws5 5:📺 Video
 set $ws6 6:🎶 Music
-set $ws7 7:🕸
+set $ws7 7:🕸 Office
 set $ws8 8:🎮 Game
 set $ws9 9:HDMI
 set $ws0 10:🕸 OBS
@@ -32,8 +32,8 @@ set $wsNULL Null
 set $img_bg     ~/Pictures/bg/people/44.jpg
 
 #set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/flowers/01.jpg
-#set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/people/04.jpg
-set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/win/027.jpg
+set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/people/04.jpg
+#set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/win/027.jpg
 
 # 截屏
 set $screenshot_full grim ~/Pictures/$(date +%Y-%m-%d-%H-%M-%S).jpg -t jpeg
@@ -42,13 +42,13 @@ set $screenshot_panel "bash -c ~/.config/sway/screenshot_panel.sh"
 
 # 应用在特定窗口启动
 # swaymsg -t get_tree | grep "app_id"
+assign [app_id="gedit"] $ws2
 assign [class="VSCodium"] $ws2
 assign [class="firefox"] $ws3
 assign [class="Chromium"] $ws3
 assign [class="netease-cloud-music"] $ws6
 assign [class="Steam"] $ws8
 assign [class="obs"] $ws0
-assign [app_id="gedit"] $ws2
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -91,6 +91,7 @@ output * {
 }
 
 output eDP-1 {
+
 }
 
 output HDMI-A-1 {
@@ -159,11 +160,11 @@ input "6058:20564:Thinkpad_Extra_Buttons" {
 exec mocp &
 exec fcitx
 
-exec_always swayidle -w \
+exec swayidle -w \
                 timeout 300 $img_lock \
                 timeout 600 'swaymsg "output * dpms off"' \
                 resume 'swaymsg "output * dpms on"' \
-                before-sleep $img_lock &
+                before-sleep $img_lock 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        Keys                                         #
@@ -180,20 +181,14 @@ bindsym $mod+Return workspace $ws1; exec $term
 bindsym $mod+Shift+Return workspace $ws1; exec $term2
 
 # 打开应用菜单
-bindsym $mod+o exec $menu
+bindsym $mod+o exec $menu_drun
 
 # 打开文件管理器
 bindsym $mod+e exec $term -e ranger
 bindsym $mod+Shift+e exec pcmanfm
-#bindsym $mod+Shift+e exec nautilus
 
 # 关闭面板
 bindsym $mod+q kill
-
-# 录屏
-bindsym $mod+g exec deepin-voice-recorder
-#bindsym $mod+g exec deepin-screen-recorder
-bindsym $mod+Shift+g workspace $ws0; exec obs
 
 # 音量(F1:0,F2:-,F3:+)
 bindsym XF86AudioMute exec "amixer set Master toggle && amixer set Speaker on"
@@ -287,96 +282,124 @@ bindsym $mod+comma workspace prev
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # 截屏
-
 bindsym Print mode "$screenshot"
-set $screenshot (1)Full ,(2)Part ,(3)Panel
+set $screenshot ScreenShot => (1)Full (2)Part (3)Panel
 mode "$screenshot" {
-  bindsym 1 exec $screenshot_full   ,mode "default"
-  bindsym 2 exec $screenshot_part   ,mode "default"
-  bindsym 3 exec $screenshot_panel  ,mode "default"
-  bindsym Escape        mode "default"
-  bindsym Print         mode "default"
+  bindsym 1 exec $screenshot_full  ,mode "default"
+  bindsym 2 exec $screenshot_part  ,mode "default"
+  bindsym 3 exec $screenshot_panel ,mode "default"
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Print  mode "default"
 }
 
 # 调整面板样式
 bindsym $mod+m mode "$border_style"
-set $border_style (1)无标题无边框 ,(2)有标题无边框 ,(3)有标题有边框
+set $border_style Border Style => (1)无标题无边框 (2)有标题无边框 (3)有标题有边框
 mode "$border_style" {
-	bindsym 1 border none    , mode "default"
-	bindsym 2 border normal 0, mode "default"
-	bindsym 3 border normal 3, mode "default"
-  bindsym Escape 		         mode "default"
-  bindsym $mod+m             mode "default"
+	bindsym 1 border none     ,mode "default"
+	bindsym 2 border normal 0 ,mode "default"
+	bindsym 3 border normal 3 ,mode "default"
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym $mod+m mode "default"
 }
 
 # sway
 bindsym $mod+s mode "$sway"
-set $sway (r)eload ,(l)ock ,(b)ar ,(e)xit_Swaywm
+set $sway swaywn => (r)eload (l)ock (b)ar (e)xit_Swaywm
 mode "$sway" {
   bindsym r reload            ,mode "default"
   bindsym l exec $img_lock    ,mode "default"
   bindsym b bar  mode toggle  ,mode "default"
   bindsym e exec swaymsg exit ,mode "default"
-  bindsym Escape 		           mode "default"
-  bindsym $mod+s               mode "default"
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym $mod+s mode "default"
 }
 
 # 系统
 bindsym $mod+Shift+s mode "$system"
-set $system (r)eboot ,(p)oweroff ,(s)uspend(men) ,(h)ibernate(swap)
+set $system System => (r)eboot (p)oweroff (s)uspend(men) (h)ibernate(swap)
 mode "$system" {
   bindsym r       exec systemctl reboot                 ,mode "default"
   bindsym p       exec systemctl poweroff               ,mode "default"
   bindsym s       exec systemctl suspend && $img_lock   ,mode "default"
   bindsym h       exec systemctl hibernate && $img_lock ,mode "default"
-  bindsym Escape 		 mode "default"
+
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
   bindsym $mod+Shift+s mode "default"
 }
 
 # 调整面板大小
 bindsym $mod+r mode "resize"
 mode "resize" {
-    bindsym $left  resize shrink width  10px
-    bindsym $down  resize grow   height 10px
-    bindsym $up    resize shrink height 10px
-    bindsym $right resize grow   width  10px
+    bindsym $left  resize grow   width  10px
+    bindsym $down  resize shrink height 10px
+    bindsym $up    resize grow   height 10px
+    bindsym $right resize shrink width  10px
+
     bindsym Escape mode "default"
+    bindsym Return mode "default"
     bindsym $mod+r mode "default"
 }
 
-# 应用菜单树
-bindsym $mod+grave mode "$app"
-set $app (b)rowser ,(w)ps
-mode "$app" {
-	bindsym b mode "$browser"
-	bindsym w mode "$wps"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+grave mode "default"
-}
-
-set $browser (b)ack ,(f)irefox ,(c)hromium
+# Browser
+set $browser Browser => (f)irefox (c)hromium
+bindsym Alt+b mode "$browser"
 mode "$browser" {
-    bindsym b mode "$app"
-  	bindsym f workspace $ws3 ;exec firefox ,mode "default"
-  	bindsym c workspace $ws3 ;exec chromium ,mode "default"
+	bindsym f workspace $ws3 ,exec firefox  ,mode "default"
+  bindsym c workspace $ws3 ,exec chromium ,mode "default"
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym Alt+b mode "default"
 }
 
-set $wps (b)ack ,(w)ork ,(e)xcel ,(p)pt ,(P)df
+# Office
+set $wps Office => (w)ork (e)xcel (p)pt (P)df
+bindsym Alt+o mode "$wps"
 mode "$wps" {
-    bindsym b mode "$app"
-  	bindsym w exec wps          ,mode "default"
-  	bindsym e exec et     		,mode "default"
-  	bindsym p exec wpp    		,mode "default"
-  	bindsym Shift+p exec wpspdf ,mode "default"
+  bindsym w workspace $ws7 ,exec wps ,mode "default"
+  bindsym e workspace $ws7 ,exec et  ,mode "default"
+  bindsym p workspace $ws7 ,exec wpp ,mode "default"
+  bindsym Shift+p workspace $ws7 ,exec wpspdf ,mode "default"
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym Alt+o mode "default"
 }
+
+# Text
+set $text Txt => (v)scodium (g)edit
+bindsym Alt+t mode "$text"
+mode "$text" {
+  bindsym v workspace $ws2 ,exec codium ,mode "default"
+  bindsym g workspace $ws2 ,exec gedit  ,mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym Alt+t mode "default"
+}
+
+# 录制
+set $recording recording => (1)voice (2)screen (3)obs
+bindsym $mod+g mode "$recording"
+mode "$recording" {
+  bindsym 1 exec deepin-voice-recorder  ,mode "default"
+  bindsym 2 exec deepin-screen-recorder ,mode "default"
+  bindsym 3 workspace $ws0; exec obs    ,mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+g mode "default"
+}
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                        Theme                                         #
@@ -432,7 +455,7 @@ client.urgent           $white1    $white1    $pink1     $white1    $white1
 
 bar {
     id 1
-    status_command          py3status -c ~/.config/sway/status.conf
+    status_command          py3status -c ~/.config/sway/pystatus
     # 去除窗口编号
     strip_workspace_numbers yes
     # 状态栏分隔符 
