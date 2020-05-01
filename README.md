@@ -25,7 +25,7 @@
 |包管理检查更新|pacman-contrib|
 
 # 快捷键
-`$mod`绑定`Super`作为修饰键。
+`$mod`绑定<kbd>Super</kbd>作为修饰键。
 ## 基本
 |快捷键|作用|
 |:-|:-|
@@ -84,8 +84,7 @@
 
 ## 模块
 
-|<kbd>Super</kbd>+<kbd>Print</kbd>|截图|
-### 截屏菜单：<kbd>Print</kbd>
+### 截屏：<kbd>Print</kbd>
 |快捷键|作用|
 |:-|:-|
 |<kbd>1</kbd>|截取全部|
@@ -94,8 +93,7 @@
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Print</kbd>|关闭菜单|
 
-|<kbd>Super</kbd>+<kbd>g</kbd>|录制|
-### 截屏菜单：<kbd>Print</kbd>
+### 录制：<kbd>Super</kbd>+<kbd>g</kbd>
 |快捷键|作用|
 |:-|:-|
 |<kbd>1</kbd>|录音|
