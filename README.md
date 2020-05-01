@@ -31,8 +31,6 @@
 |:-|:-|
 |<kbd>Super</kbd>+<kbd>Return</kbd>|打开终端|
 |<kbd>Super</kbd>+<kbd>o</kbd>|打开应用菜单|
-|<kbd>Super</kbd>+<kbd>e</kbd>|打开终端文件管理器|
-|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>e</kbd>|打开GUI文件管理器|
 |<kbd>Super</kbd>+<kbd>q</kbd>|关闭面板|
 
 ## 面板
@@ -53,14 +51,11 @@
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>z</kbd>|移动面板至上一次活动的窗口|
 |<kbd>Super</kbd>+<kbd>v</kbd>|面板水平分割方向|
 |<kbd>Super</kbd>+<kbd>b</kbd>|面板垂直分割方向|
-|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd>|水平堆叠面板|
-|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>b</kbd>|垂直堆叠面板|
-|<kbd>Super</kbd>+<kbd>c</kbd>|切换面板布局|
 |<kbd>Super</kbd>+<kbd>f</kbd>|面板全屏|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd>|悬浮/平铺面板|
 |<kbd>Super</kbd>+<kbd>Space</kbd>|面板悬浮时改变焦距|
-|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>-</kbd>|隐藏面板|
-|<kbd>Super</kbd>+<kbd>-</kbd>|显示面板|
+|<kbd>Super</kbd>+<kbd>u</kbd>|隐藏面板|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>u</kbd>|显示面板|
 
 ## 窗口
 |快捷键|作用|
@@ -69,8 +64,8 @@
 |<kbd>Super</kbd>+<kbd>1</kbd>|切换到1号窗口|
 |...|...|
 |<kbd>Super</kbd>+<kbd>0</kbd>|切换到10号窗口|
-|<kbd>Super</kbd>+<kbd>,</kbd>|切换到上一个窗口|
-|<kbd>Super</kbd>+<kbd>.</kbd>|切换到下一个窗口|
+|<kbd>Super</kbd>+<kbd>tab</kbd>|切换到上一个窗口|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>tab</kbd>|切换到下一个窗口|
 |<kbd>Super</kbd>+<kbd>z</kbd>|返回上一次活动的窗口|
 
 ## 音量
@@ -128,7 +123,7 @@
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>s</kbd>|关闭菜单|
 
-### 系统管理菜单：<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>s</kbd>
+### 系统管理菜单：<kbd>Super</kbd>+<kbd>p</kbd>
 |快捷键|作用|
 |:-|:-|
 |<kbd>r</kbd>|重启|
@@ -147,6 +142,19 @@
 |<kbd>l</kbd>|调整宽度|
 |<kbd>Esc</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
+
+### 文件管理器菜单：<kbd>Super</kbd>+<kbd>e</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>Super</kbd>+<kbd>1</kbd>|打开ranger|
+|<kbd>Super</kbd>+<kbd>2</kbd>|打开pcmanfm|
+
+### 面板布局：<kbd>Super</kbd>+<kbd>c</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>Super</kbd>+<kbd>1</kbd>|切换面板布局|
+|<kbd>Super</kbd>+<kbd>2</kbd>|水平堆叠面板|
+|<kbd>Super</kbd>+<kbd>3</kbd>|垂直堆叠面板|
 
 ## 效果
 ![](https://note.youdao.com/yws/api/personal/file/WEB96816a2725cefbaf6a86494c253516a7?method=download&shareKey=792d0692ed6ff6dc78ddcfd527a5305f)
