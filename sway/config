@@ -458,7 +458,7 @@ font pango: Source Code Pro Medium 13
 title_align center
 
 # 标题栏高度
-titlebar_padding 5
+titlebar_padding 3
 
 #						            标题栏边框 标题栏背景 标题栏字体 分裂线    边框线
 # 选中面板
