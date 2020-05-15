@@ -10,6 +10,8 @@ set $down  j
 set $up    k
 set $right l
 
+set $term xfce4-terminal
+
 # 窗口
 set $ws1 1:🏛 Term
 set $ws2 2:♨ Edit
@@ -24,13 +26,9 @@ set $ws0 10:🕸 OBS
 set $wsNULL Null
 
 # 图片
-#set $img_bg     ~/Pictures/bg/flowers/02.jpg
-#set $img_bg     ~/Pictures/bg/mac/iPhone.jpg
-set $img_bg     ~/Pictures/bg/people/44.jpg
+set $img_bg     ~/Pictures/bg/flowers/02.jpg
 
-#set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/flowers/01.jpg
-set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/people/04.jpg
-#set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/win/027.jpg
+set $img_lock   swaylock -e -F -f -i ~/Pictures/bg/flowers/01.jpg
 
 # 应用在特定窗口启动
 # swaymsg -t get_tree | grep "app_id"
@@ -41,6 +39,9 @@ assign [class="Chromium"] $ws3
 assign [class="netease-cloud-music"] $ws6
 assign [class="Steam"] $ws8
 assign [class="obs"] $ws0
+
+for_window [class="dde-file-manager"] floating enable
+#for_window [class=".*"] floating enable
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -116,9 +117,9 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
   natural_scroll   disenabled
   middle_emulation enabled
   # 灵敏度
-  pointer_accel    0.7
+  pointer_accel    0.3
   # 翻页速度
-  scroll_factor 5
+  scroll_factor 3
   # 手指映射
   # lrm:1个手指视为左击，2个手指视为右击，3个手指视为中击 
   # lmr:1指视为左击，2指视为中键单击，3指视为右击
@@ -131,9 +132,9 @@ input "2:14:ETPS/2_Elantech_TrackPoint" {
   # 自然滚动方式
   natural_scroll   disenabled
   # 灵敏度
-  pointer_accel    0.7
+  pointer_accel    0.1
   # 翻页速度
-  scroll_factor 5
+  scroll_factor 3
 }
 
 # 键盘设置
@@ -192,8 +193,7 @@ bindsym XF86MonBrightnessDown exec "brightnessctl specific 5%-"
 bindsym XF86MonBrightnessUp exec "brightnessctl specific 5%+"
 
 # 打开终端
-bindsym $mod+Return workspace $ws1; exec xfce4-terminal
-bindsym $mod+Shift+Return workspace $ws1; exec alacritty
+bindsym $mod+Return workspace $ws1; exec $term
 
 # 打开应用菜单
 bindsym $mod+o exec rofi -show drun -theme config
@@ -316,12 +316,13 @@ mode "$sway" {
 
 # 系统
 bindsym $mod+p mode "$system"
-set $system System => (r)eboot (p)oweroff (s)uspend(men) (h)ibernate(swap)
+set $system System => (r)eboot (p)oweroff (s)uspend(men) (h)ibernate(swap) (H)hardinfo
 mode "$system" {
   bindsym r exec systemctl reboot                 ,mode "default"
   bindsym p exec systemctl poweroff               ,mode "default"
   bindsym s exec systemctl suspend && $img_lock   ,mode "default"
   bindsym h exec systemctl hibernate && $img_lock ,mode "default"
+  bindsym Shift+h exec hardinfo ,mode "default"
 
   bindsym Escape mode "default"
   bindsym Return mode "default"
@@ -380,12 +381,10 @@ mode "$text" {
 }
 
 # 录制
-set $recording recording => (1)voice (2)screen (3)obs
+set $recording recording => (1)obs
 bindsym $mod+g mode "$recording"
 mode "$recording" {
-  bindsym 1 exec deepin-voice-recorder  ,mode "default"
-  bindsym 2 exec deepin-screen-recorder ,mode "default"
-  bindsym 3 workspace $ws0; exec obs    ,mode "default"
+  bindsym 1 workspace $ws0; exec obs    ,mode "default"
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -393,7 +392,7 @@ mode "$recording" {
 }
 
 # 文件管理器
-set $filemanager filemanager => (1)ranger (2)pcmanfm
+set $filemanager filemanager => (1)ranger (2)pcmanfm (3)dde-file-manager
 bindsym $mod+e mode "$filemanager"
 mode "$filemanager" {
   bindsym 1 exec $term -e ranger ,mode "default"
@@ -415,6 +414,27 @@ mode "$layout" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
   bindsym $mod+c mode "default"
+}
+
+set $network network => (1)nm-connection-editor
+bindsym $mod+Shift+n mode "$network"
+mode "$network" {
+  bindsym 1 exec nm-connection-editor ,mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+Shift+n mode "default"
+}
+
+set $media media => (1)mpv (2)vlc
+bindsym $mod+Shift+m mode "$media"
+mode "$media" {
+  bindsym 1 exec mpv ,mode "default"
+  bindsym 2 exec vlc ,mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+Shift+m mode "default"
 }
 
 

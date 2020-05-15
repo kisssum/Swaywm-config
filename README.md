@@ -15,10 +15,9 @@
 |截屏选取|slurp|
 |录屏|obs|
 |终端|xfce4-terminal|
-|终端|alacritty|
 |主题|arc-gtk-theme|
 |图标|mcmojave-circle-icon-theme-git|
-|设置主题|lxappearance|
+|主题设置|lxappearance|
 |屏幕亮度|python-pydus|
 |屏幕亮度|brightnessctl-logind|
 |音乐|moc|
@@ -64,16 +63,16 @@
 |<kbd>Super</kbd>+<kbd>1</kbd>|切换到1号窗口|
 |...|...|
 |<kbd>Super</kbd>+<kbd>0</kbd>|切换到10号窗口|
-|<kbd>Super</kbd>+<kbd>tab</kbd>|切换到上一个窗口|
-|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>tab</kbd>|切换到下一个窗口|
+|<kbd>Super</kbd>+<kbd>tab</kbd>|切换到下一个窗口|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>tab</kbd>|切换到上一个窗口|
 |<kbd>Super</kbd>+<kbd>z</kbd>|返回上一次活动的窗口|
 
-## 音量
+## 声音
 |快捷键|作用|
 |:-|:-|
 |<kbd>Fn</kbd>+<kbd>F1</kbd>|静音|
 |<kbd>Fn</kbd>+<kbd>F2</kbd>|减小音量|
-|<kbd>Fn</kbd>+<kbd>F3</kbd>|加大静音|
+|<kbd>Fn</kbd>+<kbd>F3</kbd>|加大音量|
 |<kbd>Fn</kbd>+<kbd>F4</kbd>|麦克风开关|
 
 ## 屏幕亮度
@@ -87,28 +86,21 @@
 ### 截屏：<kbd>Print</kbd>
 |快捷键|作用|
 |:-|:-|
-|<kbd>1</kbd>|截取全部|
-|<kbd>2</kbd>|截取部分|
-|<kbd>3</kbd>|截取焦距面板|
+|<kbd>1</kbd>|截取屏幕|
+|<kbd>2</kbd>|截取面板|
+|<kbd>3</kbd>|自由截取|
 |<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
 |<kbd>Print</kbd>|关闭菜单|
 
-### 录制：<kbd>Super</kbd>+<kbd>g</kbd>
-|快捷键|作用|
-|:-|:-|
-|<kbd>1</kbd>|录音|
-|<kbd>2</kbd>|录屏|
-|<kbd>3</kbd>|obs|
-|<kbd>Esc</kbd>|关闭菜单|
-|<kbd>Print</kbd>|关闭菜单|
-
-### 面板样式菜单：<kbd>Super</kbd>+<kbd>m</kbd>
+### 面板边框样式菜单：<kbd>Super</kbd>+<kbd>m</kbd>
 |快捷键|作用|
 |:-|:-|
 |<kbd>1</kbd>|无标题，无边框|
 |<kbd>2</kbd>|有标题，无边框|
 |<kbd>3</kbd>|有标题，有边框|
 |<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>m</kbd>|关闭菜单|
 
 ### Sway窗口管理菜单：<kbd>Super</kbd>+<kbd>s</kbd>
@@ -119,6 +111,7 @@
 |<kbd>b</kbd>|显示/隐藏状态栏|
 |<kbd>e</kbd>|关闭`Swaywm`|
 |<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>s</kbd>|关闭菜单|
 
 ### 系统管理菜单：<kbd>Super</kbd>+<kbd>p</kbd>
@@ -129,6 +122,7 @@
 |<kbd>s</kbd>|锁屏并睡眠(内存)|
 |<kbd>h</kbd>|锁屏并睡眠(硬盘)|
 |<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>s</kbd>|关闭菜单|
 
 ### 调整面板大小：<kbd>Super</kbd>+<kbd>r</kbd>
@@ -139,13 +133,54 @@
 |<kbd>k</kbd>|调整高度|
 |<kbd>l</kbd>|调整宽度|
 |<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
 |<kbd>Super</kbd>+<kbd>r</kbd>|关闭菜单|
+
+### 浏览器菜单：<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>b</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>f</kbd>|打开firefox|
+|<kbd>c</kbd>|打开chromium|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>b</kbd>|关闭菜单|
+
+### office菜单：<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>o</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>w</kbd>|打开wps|
+|<kbd>e</kbd>|打开表格|
+|<kbd>p</kbd>|打开ppt|
+|<kbd>Shift</kbd>+<kbd>p</kbd>|打开pdf|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>o</kbd>|关闭菜单|
+
+### 文本菜单：<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>t</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>v</kbd>|打开vscodium|
+|<kbd>g</kbd>|打开gedit|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>t</kbd>|关闭菜单|
+
+### 录制：<kbd>Super</kbd>+<kbd>g</kbd>
+|快捷键|作用|
+|:-|:-|
+|<kbd>1</kbd>|obs|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>g</kbd>|关闭菜单|
 
 ### 文件管理器菜单：<kbd>Super</kbd>+<kbd>e</kbd>
 |快捷键|作用|
 |:-|:-|
 |<kbd>Super</kbd>+<kbd>1</kbd>|打开ranger|
 |<kbd>Super</kbd>+<kbd>2</kbd>|打开pcmanfm|
+|<kbd>Esc</kbd>|关闭菜单|
+|<kbd>Enter</kbd>|关闭菜单|
+|<kbd>Super</kbd>+<kbd>e</kbd>|关闭菜单|
 
 ### 面板布局：<kbd>Super</kbd>+<kbd>c</kbd>
 |快捷键|作用|
