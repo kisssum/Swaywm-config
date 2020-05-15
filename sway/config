@@ -182,8 +182,8 @@ exec swayidle -w \
 
 # 音量(F1:0,F2:-,F3:+)
 bindsym XF86AudioMute exec "amixer set Master toggle && amixer set Speaker on"
-bindsym XF86AudioLowerVolume exec amixer set Master playback 5-  
-bindsym XF86AudioRaiseVolume exec amixer set Master playback 5+  
+bindsym XF86AudioLowerVolume exec amixer set Master playback 5%-  
+bindsym XF86AudioRaiseVolume exec amixer set Master playback 5%+  
 
 # 麦克风开关(F4)
 bindsym XF86AudioMicMute exec "amixer set Capture toggle"
